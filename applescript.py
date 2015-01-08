@@ -98,6 +98,7 @@ class AppleScript(Linter):
 
         out = self.communicate(('/usr/bin/python', '-c', lint_script), self.code)
         out = out.replace('\u2019', '\'')
+        out = out.splitlines()[0]
         error = json.loads(out)
         if error:
             brief = error['NSAppleScriptErrorBriefMessage']
